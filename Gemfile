@@ -30,6 +30,9 @@ gem 'devise'
 # User authorization
 gem 'pundit'
 
+# Use npm modules
+gem 'browserify-rails', '1.5.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

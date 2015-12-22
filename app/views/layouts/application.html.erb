@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rails5DemoApp</title>
+    <title>Rails5 Demo Application</title>
+    <meta name="description" content="Rails5 demo application that demostrate action cable and new rails 5 features">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
-
   <body>
     <%= yield %>
   </body>
