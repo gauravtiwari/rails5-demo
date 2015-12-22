@@ -25,19 +25,15 @@ gem 'puma'
 gem 'figaro'
 
 # User authentication
-gem 'devise'
+gem 'devise', github: 'twalpole/devise', branch: 'rails5'
 
 # User authorization
 gem 'pundit'
 
 # Use npm modules
-gem 'browserify-rails', '1.5.0'
+gem 'react-rails'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'responders', github: 'plataformatec/responders'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
