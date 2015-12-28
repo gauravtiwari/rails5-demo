@@ -128,6 +128,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    materialize-sass (0.97.4)
+      sass (~> 3.3)
     method_source (0.8.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
@@ -179,6 +181,7 @@ GEM
       rails (>= 3.2)
       tilt
     redis (3.2.2)
+    sass (3.4.20)
     spring (1.6.0)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -219,6 +222,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  materialize-sass
   pg (~> 0.18)
   puma
   pundit

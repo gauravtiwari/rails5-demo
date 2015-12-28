@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="s12 m6">
+    <div class="card large" data-channel='room' data-room-id="<%= @room.id %>">
+      <div class="content">
+        <span class="card-title"><%= @room.name %></span>
+        <p><%= @room.description %></p>
+        <ul class="collection">
+          <% @room.messages.includes(:user).each do |message| %>
+            <%= render partial: 'messages/message', locals: {message: message} %>
+          <% end %>
+        </ul>
+        <%= form_for([@room, Message.new], remote: true) do |f| %>
+          <div class="input-field">
+            <%= f.text_area :text, class: 'materialize-textarea', placeholder: "Enter message", data: {behavior: "room_speaker" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

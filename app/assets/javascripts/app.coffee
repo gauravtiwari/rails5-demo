@@ -1,4 +1,4 @@
-window.App ||= {}
+@App ||= {}
 
 App.loggedIn = ->
  if $('meta[name=logged_in]').attr('authenticated') == "true"

@@ -7,10 +7,13 @@ App.CurrentUser = ->
     $('meta[name=current_user]').attr('id')
 
   name:
-    $('meta[name=current_user]').attr('name')
+    $('meta[name=current_user]').attr('username')
+
+  badge:
+    $('meta[name=current_user]').attr('badge')
 
   email:
     $('meta[name=current_user]').attr('email')
 
   isCurrent: (id) ->
-    this.getId() == id
+    @id is id
