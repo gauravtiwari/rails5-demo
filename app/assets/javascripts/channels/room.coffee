@@ -9,10 +9,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    @appendMessage(data.message) unless @userIsCurrentUser(data.message)
-
-  appendMessage: (message) ->
-    @collection().find('.collection').append(message)
+    @collection().append(data.message)
+    App.scrollToBottom()
 
   speak: (message) ->
     @perform 'speak', message: message
@@ -26,14 +24,6 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     else
       @perform 'unfollow'
 
-  updateOptimisticMessage: (text) ->
-    @collection().find('.collection').append(
-      '<li class="collection-item avatar">
-        <i class="material-icons circle red">' + App.CurrentUser().badge + '</i>
-        <p>' + text + '</p>
-      </li>'
-    )
-
   installPageChangeCallback: ->
     unless @installedPageChangeCallback
       @installedPageChangeCallback = true
@@ -41,8 +31,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
 $(document).on 'keypress', '[data-behavior="room_speaker"]', (event) ->
   if event.keyCode is 13
-    App.room.updateOptimisticMessage(event.target.value)
-    $(event.target).closest('form').submit()
+    if event.target.value.length > 0
+      $(event.target).closest('form').submit()
     event.target.value = ''
     event.preventDefault()
 

@@ -8,5 +8,8 @@ App.loggedIn = ->
   localStorage.setItem('current_user_id', undefined)
   return false
 
-$(document).ready ->
-  App.loggedIn();
+$(document).on 'page:change', ->
+  App.loggedIn()
+  try
+    App.scrollToBottom()
+  catch exception

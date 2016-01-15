@@ -13,22 +13,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <% if user_signed_in? %>
-            <li><a href="#"><%= current_user.name %></a></li>
-            <li><%= link_to('Log out', destroy_user_session_path) %></li>
-          <% else %>
-            <li><%= link_to('Log in', new_user_session_path) %></li>
-            <li><%= link_to('Sign up', new_user_registration_path) %></li>
-          <% end %>
-        </ul>
+    <div class="header">
+      <div class="team-menu">
+        RealChat
       </div>
-    </nav>
-
-    <div class="container">
+      <div class="channel-menu">
+        <span class="channel-menu_name">
+          <span class="channel-menu_prefix">#</span>
+          slack
+        </span>
+      </div>
+    </div>
+    <div class="main">
       <%= yield %>
     </div>
   </body>

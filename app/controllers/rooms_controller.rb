@@ -1,15 +1,18 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :set_room, only: [:show, :edit, :update, :destroy]
 
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    @room = Room.first
+    redirect_to @room unless @room.nil?
   end
 
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @rooms = Room.all
   end
 
   # GET /rooms/new

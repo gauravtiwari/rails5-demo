@@ -15,5 +15,8 @@ App.CurrentUser = ->
   email:
     $('meta[name=current_user]').attr('email')
 
+  isOnline: (id) ->
+    false
+
   isCurrent: (id) ->
     @id is id
