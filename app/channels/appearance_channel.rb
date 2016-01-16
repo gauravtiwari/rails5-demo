@@ -6,7 +6,11 @@ class AppearanceChannel < ApplicationCable::Channel
   def unsubscribed
     current_user.disappear
   end
-  
+
+  def appear
+    current_user.appear
+  end
+
   def away
     current_user.away
   end

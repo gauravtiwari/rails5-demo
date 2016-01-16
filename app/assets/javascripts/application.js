@@ -15,6 +15,7 @@
 //= require materialize-sprockets
 //= require react
 //= require components
+//= require jquery.idle
 //= require turbolinks
 //= require react_ujs
 //= require_tree .

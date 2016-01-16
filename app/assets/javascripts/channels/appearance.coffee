@@ -1,8 +1,7 @@
 App.appearance = App.cable.subscriptions.create "AppearanceChannel",
-  timeoutID = undefined
   connected: ->
     @install()
-    @setup()
+    @trackStatus()
 
   disconnected: ->
     @uninstall()
@@ -11,46 +10,26 @@ App.appearance = App.cable.subscriptions.create "AppearanceChannel",
     @uninstall()
 
   install: ->
-    $(document).on "page:change.appearance", =>
-      @appear()
-      @setup()
-
-  appear: ->
-    @perform("appear")
-    @setup()
+    $(document).on 'page:change', -> App.appearance.appear()
 
   away: ->
     @perform("away")
+    App.CurrentUser().setAway()
+
+  appear: ->
+    @perform("appear")
+    App.CurrentUser().setOnline()
 
   uninstall: ->
     $(document).off(".appearance")
 
-  setup: ->
-    @addEventListener 'mousemove', @resetTimer(), false
-    @addEventListener 'mousedown', @resetTimer(), false
-    @addEventListener 'keypress', @resetTimer(), false
-    @addEventListener 'DOMMouseScroll', @resetTimer(), false
-    @addEventListener 'mousewheel', @resetTimer(), false
-    @addEventListener 'touchmove', @resetTimer(), false
-    @addEventListener 'MSPointerMove', @resetTimer(), false
-    startTimer()
-    return
-
-  startTimer: ->
-    # wait 5 minutes before calling goInactive
-    timeoutID = window.setTimeout(setAway, 2000)
-    return
-
-  resetTimer: (e) ->
-    window.clearTimeout timeoutID
-    setActive()
-    return
-
-  setAway: ->
-    @away()
-    return
-
-  setActive: ->
-    @appear()
-    startTimer()
-    return
+  trackStatus: ->
+    App.CurrentUser().setOnline()
+    $(document).idle
+      onIdle: ->
+        App.appearance.away()
+        return
+      onActive: ->
+        App.appearance.appear()
+        return
+      idle: 5000

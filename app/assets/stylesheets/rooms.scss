@@ -311,7 +311,21 @@ body {
   height: 100%;
   margin-left: 220px;
 }
-
+.user-status {
+  &.icon {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border-radius: 10px;
+    display: inline-block;
+  }
+  &.away {
+    background: yellow;
+  }
+  &.online {
+    background: green;
+  }
+}
 .input-box_text {
   font-size: .95rem;
   width: 90%;

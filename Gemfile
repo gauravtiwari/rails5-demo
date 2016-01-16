@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-
-
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jquery.idle'
+end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta1', '< 5.1'
 # Use postgresql as the database for Active Record

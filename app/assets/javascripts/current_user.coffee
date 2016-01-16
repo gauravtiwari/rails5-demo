@@ -18,5 +18,10 @@ App.CurrentUser = ->
   isOnline: (id) ->
     false
 
-  isCurrent: (id) ->
-    @id is id
+  setAway: ->
+    $('#user-status-' + @id).removeClass 'online'
+    $('#user-status-' + @id).toggleClass 'away'
+
+  setOnline: ->
+    $('#user-status-' + @id).removeClass 'away'
+    $('#user-status-' + @id).toggleClass 'online'
