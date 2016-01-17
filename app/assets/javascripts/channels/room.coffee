@@ -35,5 +35,3 @@ $(document).on 'keypress', '[data-behavior="room_speaker"]', (event) ->
       $(event.target).closest('form').submit()
     event.target.value = ''
     event.preventDefault()
-
-
